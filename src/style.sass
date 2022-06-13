@@ -1,0 +1,159 @@
+//設定字體
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display')
+
+*  
+  font-family: "Playfair Display","微軟正黑體"
+  border: solid 0px black
+  position: relative
+  
+//會先找第一個字體，找不到中文字體就會往第二個字體
+//設定Mixins
+@mixin size($w,$h:$w,$bdrs:0)
+  width: $w
+  height: $h
+  border-radius: $bdrs
+  
+@mixin flex($j:center,$a:center)
+  display: flex
+  justify-content: $j //主軸線:左右
+  align-items: $a  //副軸線:上下
+  
+html,body
+  +size(100%)
+  margin: 0
+  +flex
+  padding: 50px
+  font-size: 15px
+  line-height: 28px
+  letter-spacing: 1px
+  background-color: #9DC7C0
+  color: rgba(255, 255, 255, 0.95)
+.resume 
+  +flex
+  width: 600px
+  border: solid 8px white
+  padding: 15px
+  position:relative/*設定相對位子*/
+.left
+  flex: 7
+  padding-right: 50px
+.right
+  flex: 7
+  padding-left: 50px
+  padding-top: 150px
+.left,.right 
+  padding: 15px
+.photo
+  +size(150px,150px,50%)
+  background-image: url(https://i.imgur.com/170PGXn.jpg)
+  border: solid 5px white
+  left:0px
+  top:0px
+  background-size: cover
+  position: relative /*讓框內的文字為相對位置*/
+.photo:hover
+  background-image: url(https://i.imgur.com/bJtIkbT.jpg)
+  transition: transform .75s
+  transform: scale(1.05)
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3)
+a
+  text-decoration: none
+  color: white
+.btn
+  display: inline-block
+  margin-block: 2px
+  color: #FFF
+  position: relative
+.btn:after
+  content: ""
+  display: inline-block //接在文字後面 
+  width: 100% // 產生的方框寬
+  height: 2px // 產生的方框高
+  background-color: #ffde9a
+  margin-left: 0px
+  margin-bottom: 15px
+  transform: scaleX(0)
+  transform-origin: left
+  transition: transform .35s ease
+.btn:hover::after
+  transform: scaleX(1)
+.btn.mailto
+  position: relative
+  left: 20px
+ul 
+  list-style: none
+  padding: 0// 不要內縮
+h2
+  margin: 0//上下左右邊框都為0
+  margin-bottom: 25px //下編為25px
+  font-weight: 400
+h2:after
+  content: ""
+  display: inline-block //接在文字後面 
+  width: 30px // 產生的方框寬
+  height: 8px // 產生的方框高
+  background-color: #fff
+  margin-left: 10px
+h4 
+  margin: 0
+  margin-top: 40px
+  opacity: 0.8
+  font-weight: 400
+.decoration
+  +size(300px,100px,50px 0 0 50px)
+  background: linear-gradient(to top right, #6b9991, #ffffae)
+  position: absolute
+  right: -15px
+  top: -50px
+.listExperience
+  .li 
+    +flex
+    margin-bottom: 10px
+.listExperience
+  ul
+    li 
+      padding-left: 15px
+      margin-left: 60px
+      border-left: solid 5px white
+  .year
+    ul
+      li:nth-child(1) 
+         border-color: #97b19a
+      li:nth-child(2)
+        border-color: #b8caa4
+      li:nth-child(3) 
+        border-color: #d3deab
+      li:nth-child(4)
+        border-color: #ffde9e
+.circle
+  +size(40px,40px,50%)
+  background-color: #fff
+  border-radius:  50%
+  position: relative
+  overflow: hidden
+  .num
+    position: relative
+    font-size: 16px
+    margin: 0
+    top: 5px
+    color: #97b19a
+    opacity: 0
+    +flex
+.circle:hover
+  .num
+    opacity: 1 
+.p90,.p180,.p270,.p360
+  position: absolute
+  +size(50%,50%)
+  left: 50%
+  top: 0
+  background-color: #ffde9a
+.p180
+  left: 50%
+  top: 50%
+.p270
+  left: 0
+  top: 50%
+.p360
+  left: 0
+  top: 0
